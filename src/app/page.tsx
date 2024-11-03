@@ -1,4 +1,3 @@
- 
 import Carrosel from "@/components/Carrosel";
 import React from "react";
 
