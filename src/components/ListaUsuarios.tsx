@@ -2,8 +2,15 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
+interface Usuario {
+    cpf: string;
+    nome: string;
+    rg: string;
+    cep: string;
+}
+
 export default function ListaUsuarios() {
-    const [usuarios, setUsuarios] = useState([]);
+    const [usuarios, setUsuarios] = useState<Usuario[]>([]);
 
     useEffect(() => {
         fetch("http://localhost:8080/usuario")
@@ -17,17 +24,17 @@ export default function ListaUsuarios() {
             });
     }, []);
 
-    const handleDelete = (id) => {
+    const handleDelete = (id: string) => {
         fetch(`http://localhost:8080/usuario/${id}`, {
             method: "delete",
         })
             .then(() => {
-                window.location = "/";
+                window.location.href = "/"; // Use window.location.href para redirecionar
             })
             .catch((error) => {
                 console.log(error);
             });
-    };
+    };    
 
     return (
         <div className="w-7/10 mx-auto font-sans">
@@ -64,7 +71,7 @@ export default function ListaUsuarios() {
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colSpan="5" className="text-center bg-gray-800 text-white p-2">Produtos do Banco de Dados</td>
+                        <td className="text-center bg-gray-800 text-white p-2 colSpan-5">Produtos do Banco de Dados</td>
                     </tr>
                 </tfoot>
             </table>
