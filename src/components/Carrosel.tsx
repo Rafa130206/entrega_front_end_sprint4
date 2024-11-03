@@ -26,7 +26,7 @@ export default function Carrosel() {
   const next = () => setAtual(atual === slides.length - 1 ? 0 : atual + 1);
 
   return (
-    <div className="max-w-lg">
+    <div className="max-w-lg ml-20 mt-20">
       <div className="overflow-hidden relative">
         <div
           className="flex transition-transform ease-out duration-500"
@@ -36,7 +36,7 @@ export default function Carrosel() {
             <Image key={i} src={s} alt="" />
           ))}
         </div>
-        <div className="absolute inset-0 flex items-center justify-between p-4">
+        <div className="absolute inset-0 flex items-center justify-between p-4 ">
           <button
             className="text-3xl font-black p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white"
             onClick={prev}
